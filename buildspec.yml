@@ -3,13 +3,15 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.x
+      python: 3.x  # Specifies Python 3.x runtime
   build:
     commands:
-      - echo "Building the project..."
-      - echo "Hello World"
-      - echo "<html><body><h1>Welcome to My Project</h1></body></html>" > index.html
+      - echo "Building the project..."  # Prints a message indicating the build process
+      - echo "Hello World"  # Prints another simple message
+      - echo "<html><body><h1>Welcome to My Project</h1></body></html>" > index.html  # Creates the index.html file
+      - echo "Uploading index.html to S3 bucket..."  # Prints a message before uploading
+      - aws s3 cp index.html s3://my-codebuild-artifacts1/my-first-devops-build/  # Uploads index.html to your S3 bucket
 
 artifacts:
   files:
-    - index.html
+    - index.html  # Specifies index.html as an artifact
